@@ -5,7 +5,7 @@ import hk.ust.comp3021.person.User;
 import java.util.Date;
 import java.util.HashMap;
 
-public class UploadPaperAction {
+public class UploadPaperAction extends Action{
     private String bibfilePath;
 
     private HashMap<String, Paper> uploadedPapers = new HashMap<>();
@@ -14,6 +14,8 @@ public class UploadPaperAction {
 
     public UploadPaperAction(String id, User user, Date time, String bibfilePath) {
         //TODO: complete the definition of the constructor. Define the class as the subclass of Action.
+        super(id, user, time, ActionType.UPLOAD_PAPER);
+        this.bibfilePath = bibfilePath;
     }
 
     //You may need the following methods to set or get the fields of AddCommentAction

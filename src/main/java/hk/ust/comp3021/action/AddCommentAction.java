@@ -5,7 +5,7 @@ import hk.ust.comp3021.resource.Comment.*;
 
 import java.util.Date;
 
-public class AddCommentAction {
+public class AddCommentAction extends Action{
     private String commentStr;
     private CommentType commentType;
     private String objectId;
@@ -14,6 +14,10 @@ public class AddCommentAction {
 
     public AddCommentAction(String id, User user, Date time, String commentStr, CommentType commentType, String objectId) {
         //TODO: complete the definition of the constructor. Define the class as the subclass of Action.
+        super(id, user, time, ActionType.ADD_COMMENT);
+        this.commentStr = commentStr;
+        this.commentType = commentType;
+        this.objectId = objectId;
     }
 
     //You may need the following methods to set or get the fields of AddCommentAction

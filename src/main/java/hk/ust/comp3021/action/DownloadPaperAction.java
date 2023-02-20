@@ -3,7 +3,7 @@ package hk.ust.comp3021.action;
 import hk.ust.comp3021.person.User;
 import java.util.*;
 
-public class DownloadPaperAction {
+public class DownloadPaperAction extends Action{
     private String downloadPath;
 
     private final ArrayList<String> papers = new ArrayList<>();
@@ -13,6 +13,8 @@ public class DownloadPaperAction {
 
     public DownloadPaperAction(String id, User user, Date time, String downloadPath) {
         //TODO: complete the definition of the constructor. Define the class as the subclass of Action.
+        super(id, user, time, ActionType.DOWNLOAD_PAPER);
+        this.downloadPath = downloadPath;
     }
 
     //You may need the following methods to set or get the fields of AddCommentAction

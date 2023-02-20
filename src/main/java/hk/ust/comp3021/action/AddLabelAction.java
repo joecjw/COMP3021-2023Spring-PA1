@@ -3,7 +3,7 @@ package hk.ust.comp3021.action;
 import hk.ust.comp3021.person.User;
 import java.util.Date;
 
-public class AddLabelAction {
+public class AddLabelAction extends Action{
     private String labelStr;
 
     private String paperID;
@@ -12,6 +12,9 @@ public class AddLabelAction {
 
     public AddLabelAction(String id, User user, Date time, String labelStr, String paperID) {
         //TODO: complete the definition of the constructor. Define the class as the subclass of Action.
+        super(id, user, time, ActionType.ADD_LABEL);
+        this.labelStr = labelStr;
+        this.paperID = paperID;
     }
 
     //You may need the following methods to set or get the fields of AddCommentAction

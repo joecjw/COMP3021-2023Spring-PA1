@@ -4,7 +4,7 @@ import hk.ust.comp3021.resource.Paper;
 import hk.ust.comp3021.person.User;
 import java.util.*;
 
-public class SearchPaperAction {
+public class SearchPaperAction extends Action{
     public enum SearchKind {
         ID,
         TITLE,
@@ -19,6 +19,9 @@ public class SearchPaperAction {
 
     public SearchPaperAction(String id, User user, Date time, String searchContent, SearchKind kind) {
         //TODO: complete the definition of the constructor. Define the class as the subclass of Action.
+        super(id, user, time, ActionType.SEARCH_PAPER);
+        this.searchContent = searchContent;
+        this.kind = kind;
     }
 
     //You may need the following methods to set or get the fields of AddCommentAction

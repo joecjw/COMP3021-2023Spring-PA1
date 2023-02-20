@@ -73,7 +73,9 @@ public class MiniMendeleyEngine {
      */
     public User processUserRegister(String id, String name, Date date) {
         //TODO: complete the definition of the method `processUserRegister`
-        return null;
+        User newuser = new User(id, name, date);
+        users.add(newuser);
+        return newuser;
     }
 
     /**
@@ -94,6 +96,7 @@ public class MiniMendeleyEngine {
      */
     public Comment processAddCommentAction(User curUser, AddCommentAction action) {
         //TODO: complete the definition of the method `processAddCommentAction`
+
         return null;
     }
 

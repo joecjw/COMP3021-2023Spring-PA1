@@ -4,7 +4,7 @@ import hk.ust.comp3021.resource.Comment;
 import hk.ust.comp3021.resource.Label;
 import java.util.*;
 
-public class User {
+public class User extends Person{
     private Date registerDate;
 
     private ArrayList<Comment> userComments;
@@ -13,8 +13,11 @@ public class User {
 
     public User(String id, String name, Date registerDate) {
         //TODO: complete the definition of the constructor
+        super(id,name);
+        this.registerDate = registerDate;
+        this.userComments = new ArrayList<>();
+        this.userLabels = new ArrayList<>();
     }
-
 
     /**
      * Return an ArrayList containing all the comments of the paper with a given paper id.
@@ -24,6 +27,7 @@ public class User {
     public ArrayList<Comment> searchCommentByPaperObjID(String id) {
         //TODO: complete the definition of the method ``searchCommentByPaperObjID''
         return null;
+
     }
 
 
@@ -55,7 +59,11 @@ public class User {
      * (2) changing the type signature of `public` methods
      * (3) changing the modifiers of the fields and methods, e.g., changing a modifier from "private" to "public"
      */
-    public void yourMethod() {
+    public ArrayList<Comment> getUserComments() {
+        return this.userComments;
+    }
 
+    public ArrayList<Label> getUserLabels() {
+        return  this.userLabels;
     }
 }
