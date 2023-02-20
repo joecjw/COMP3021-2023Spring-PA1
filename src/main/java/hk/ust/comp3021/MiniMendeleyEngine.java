@@ -13,6 +13,7 @@ import java.util.*;
 public class MiniMendeleyEngine {
     private final String defaultBibFilePath = "resources/bibdata/PAData.bib";
     private final HashMap<String, Paper> paperBase = new HashMap<>();
+
     private final ArrayList<User> users = new ArrayList<>();
     private final ArrayList<Researcher> researchers = new ArrayList<>();
 
@@ -96,8 +97,39 @@ public class MiniMendeleyEngine {
      */
     public Comment processAddCommentAction(User curUser, AddCommentAction action) {
         //TODO: complete the definition of the method `processAddCommentAction`
+        Comment newComment = new Comment("Comment_" + this.comments.size(), new Date(), action.getCommentStr(), curUser,
+                                            action.getCommentType(), action.getObjectId());
 
-        return null;
+        actions.add(action);
+        if(!this.comments.add(newComment)){
+            action.setActionResult(false);
+            return null;
+        }
+
+        if(newComment.getType().equals(CommentType.COMMENT_OF_PAPER)) {
+            if(!paperBase.get(newComment.getCommentObjId()).getComments().add(newComment)){
+                action.setActionResult(false);
+                return  null;
+            }
+        }
+        else if(newComment.getType().equals(CommentType.COMMENT_OF_COMMENT)){
+            for(int i = 0; i < this.comments.size(); i++){
+                if(newComment.getCommentObjId().equals(comments.get(i).getCommentID())){
+                    if(!comments.get(i).getAttachedComments().add(newComment)){
+                        action.setActionResult(false);
+                        return null;
+                    }
+                }
+            }
+        }
+
+        if(!curUser.getUserComments().add(newComment)){
+            action.setActionResult(false);
+            return null;
+        }
+
+        action.setActionResult(true);
+        return newComment;
     }
 
     /**
@@ -117,7 +149,27 @@ public class MiniMendeleyEngine {
      */
     public Label processAddLabelAction(User curUser, AddLabelAction action) {
         //TODO: complete the definition of the method `processAddLabelAction`
-        return null;
+        Label newLabel = new Label("Label_" + this.labels.size(), action.getPaperID(),
+                                                    new Date(), action.getLabelStr(), curUser);
+
+        actions.add(action);
+        if(!this.labels.add(newLabel)){
+            action.setActionResult(false);
+            return null;
+        }
+
+        if(!paperBase.get(newLabel.getPaperID()).getLabels().add(newLabel)){
+            action.setActionResult(false);
+            return  null;
+        }
+
+        if(!curUser.getUserLabels().add(newLabel)){
+            action.setActionResult(false);
+            return null;
+        }
+
+        action.setActionResult(true);
+        return newLabel;
     }
 
     /**
