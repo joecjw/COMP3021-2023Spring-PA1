@@ -8,6 +8,8 @@ import hk.ust.comp3021.resource.Label;
 import hk.ust.comp3021.resource.Paper;
 import hk.ust.comp3021.resource.Comment.*;
 import hk.ust.comp3021.action.SearchPaperAction.SearchKind;
+import hk.ust.comp3021.utils.BibExporter;
+
 import java.util.*;
 
 public class MiniMendeleyEngine {
@@ -185,6 +187,21 @@ public class MiniMendeleyEngine {
      */
     public void processDownloadPaperAction(User curUser, DownloadPaperAction action) {
         //TODO: complete the definition of the method `processDownloadPaperAction`
+        HashMap<String, Paper> tagetPapers = new HashMap<>();
+        for(String key : this.paperBase.keySet()){
+            if(action.getPaper().contains(this.paperBase.get(key).getPaperID())){
+                tagetPapers.put(key, this.paperBase.get(key));
+            }
+        }
+        BibExporter bibExporter = new BibExporter(tagetPapers, action.getDownloadPath());
+        bibExporter.export();
+        if(bibExporter.getErrStatus() == true){
+            action.setActionResult(false);
+        }
+        else {
+            action.setActionResult(true);
+        }
+        actions.add(action);
     }
 
     /**
@@ -204,6 +221,33 @@ public class MiniMendeleyEngine {
      */
     public void processUploadPaperAction(User curUser, UploadPaperAction action) {
         //TODO: complete the definition of the method `processUploadPaperAction`
+            try {
+                this.paperBase.putAll(action.getUploadedPapers());
+                for (String key : action.getUploadedPapers().keySet()) {
+                    for (String author : action.getUploadedPapers().get(key).getAuthors()) {
+                        boolean existedResearcher = false;
+                        Researcher updateResearcher = null;
+                        for (Researcher researcher : this.researchers) {
+                            if (researcher.getName().equals(author)) {
+                                existedResearcher = true;
+                                updateResearcher = researcher;
+                            }
+                        }
+                        if (existedResearcher == true) {
+                            updateResearcher.getPapers().add(action.getUploadedPapers().get(key));
+                        } else {
+                            Researcher newResearcher = new Researcher("Researcher_" + String.valueOf(researchers.size()), author);
+                            newResearcher.getPapers().add(action.getUploadedPapers().get(key));
+                            this.researchers.add(newResearcher);
+                        }
+                    }
+                }
+            } catch (Exception e) {
+                action.setActionResult(false);
+            }
+
+        action.setActionResult(true);
+        this.actions.add(action);
     }
 
 

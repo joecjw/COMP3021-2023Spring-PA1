@@ -1,6 +1,9 @@
 package hk.ust.comp3021.utils;
 
 import hk.ust.comp3021.resource.Paper;
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 
 public class BibExporter {
@@ -12,6 +15,8 @@ public class BibExporter {
 
     public BibExporter(HashMap<String, Paper> papers, String bibFile) {
         //TODO: complete the definition of the constructor
+        this.papers = papers;
+        this.bibFile = bibFile;
     }
 
 
@@ -23,7 +28,11 @@ public class BibExporter {
 
     public String generate(){
         //TODO: complete the definition of the method `export`
-        return null;
+        String tokenizedString = null;
+        for(String key : this.papers.keySet()){
+            tokenizedString += this.papers.get(key).toString();
+        }
+        return tokenizedString;
     }
 
 
@@ -32,8 +41,17 @@ public class BibExporter {
      * If any exception throws, please set the field `isErr` to true. Otherwise, `isErr` is false.
      * Hint: You may need to utilize the method `generate` to get the tokenized string of the field `papers`.
      */
-    public void export() {
+    public void export(){
         //TODO: complete the definition of the method `export`
+        try {
+            FileWriter myWriter = new FileWriter(bibFile);
+            myWriter.write(this.generate());
+            myWriter.close();
+        }
+        catch (IOException e) {
+            this.isErr = true;
+        }
+
     }
 
 
@@ -44,7 +62,7 @@ public class BibExporter {
      * (2) changing the type signature of `public` methods
      * (3) changing the modifiers of the fields and methods, e.g., changing a modifier from "private" to "public"
      */
-    public void yourMethod() {
-
+    public boolean getErrStatus() {
+        return this.isErr;
     }
 }

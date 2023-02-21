@@ -11,6 +11,7 @@ public class BibParser {
 
     public BibParser(String bibfilePath) {
         //TODO: complete the definition of the constructor
+        this.bibfilePath = bibfilePath;
     }
 
 
@@ -39,6 +40,19 @@ public class BibParser {
      */
     public void parse() {
         //TODO: complete the definition of the method `parse`
+        try {
+            Scanner myReader = new Scanner(this.bibfilePath);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                if(data.contains("@")){
+
+                }
+            }
+            myReader.close();
+        } catch (Exception e) {
+            this.isErr = true;
+        }
+
     }
 
 
