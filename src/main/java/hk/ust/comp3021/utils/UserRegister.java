@@ -20,7 +20,8 @@ public class UserRegister {
      */
     public User register() {
         //TODO: complete the definition of the method `register`
-        return null;
+        User newUser = new User(this.assignedUserID,this.userName,this.registerTime);
+        return newUser;
     }
 
     /**

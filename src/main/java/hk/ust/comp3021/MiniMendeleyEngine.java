@@ -9,6 +9,7 @@ import hk.ust.comp3021.resource.Paper;
 import hk.ust.comp3021.resource.Comment.*;
 import hk.ust.comp3021.action.SearchPaperAction.SearchKind;
 import hk.ust.comp3021.utils.BibExporter;
+import hk.ust.comp3021.utils.UserRegister;
 
 import java.util.*;
 
@@ -76,9 +77,10 @@ public class MiniMendeleyEngine {
      */
     public User processUserRegister(String id, String name, Date date) {
         //TODO: complete the definition of the method `processUserRegister`
-        User newuser = new User(id, name, date);
-        users.add(newuser);
-        return newuser;
+        UserRegister userRegister = new UserRegister(id, name, date);
+        User newUser = userRegister.register();
+        users.add(newUser);
+        return newUser;
     }
 
     /**
