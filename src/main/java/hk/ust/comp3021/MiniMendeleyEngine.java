@@ -9,6 +9,7 @@ import hk.ust.comp3021.resource.Paper;
 import hk.ust.comp3021.resource.Comment.*;
 import hk.ust.comp3021.action.SearchPaperAction.SearchKind;
 import hk.ust.comp3021.utils.BibExporter;
+import hk.ust.comp3021.utils.BibParser;
 import hk.ust.comp3021.utils.UserRegister;
 
 import java.util.*;
@@ -223,33 +224,42 @@ public class MiniMendeleyEngine {
      */
     public void processUploadPaperAction(User curUser, UploadPaperAction action) {
         //TODO: complete the definition of the method `processUploadPaperAction`
-            try {
-                this.paperBase.putAll(action.getUploadedPapers());
-                for (String key : action.getUploadedPapers().keySet()) {
-                    for (String author : action.getUploadedPapers().get(key).getAuthors()) {
-                        boolean existedResearcher = false;
-                        Researcher updateResearcher = null;
-                        for (Researcher researcher : this.researchers) {
-                            if (researcher.getName().equals(author)) {
-                                existedResearcher = true;
-                                updateResearcher = researcher;
-                            }
-                        }
-                        if (existedResearcher == true) {
-                            updateResearcher.getPapers().add(action.getUploadedPapers().get(key));
-                        } else {
-                            Researcher newResearcher = new Researcher("Researcher_" + String.valueOf(researchers.size()), author);
-                            newResearcher.getPapers().add(action.getUploadedPapers().get(key));
-                            this.researchers.add(newResearcher);
+        BibParser bibParser = new BibParser(action.getBibfilePath());
+        bibParser.parse();
+
+        this.actions.add(action);
+        if(bibParser.getErrStatus() == true){
+            action.setActionResult(false);
+            return;
+        }
+
+        try {
+            this.paperBase.putAll(bibParser.getResult());
+            for (String key : bibParser.getResult().keySet()) {
+                for (String author : bibParser.getResult().get(key).getAuthors()) {
+                    boolean existedResearcher = false;
+                    Researcher updateResearcher = null;
+                    for (Researcher researcher : this.researchers) {
+                        if (researcher.getName().equals(author)) {
+                            existedResearcher = true;
+                            updateResearcher = researcher;
                         }
                     }
+                    if (existedResearcher == true) {
+                        updateResearcher.getPapers().add(bibParser.getResult().get(key));
+                    } else {
+                        Researcher newResearcher = new Researcher("Researcher_" + String.valueOf(researchers.size()), author);
+                        newResearcher.getPapers().add(bibParser.getResult().get(key));
+                        this.researchers.add(newResearcher);
+                    }
                 }
-            } catch (Exception e) {
-                action.setActionResult(false);
             }
+        } catch (Exception e) {
+            action.setActionResult(false);
+            return;
+        }
 
         action.setActionResult(true);
-        this.actions.add(action);
     }
 
 

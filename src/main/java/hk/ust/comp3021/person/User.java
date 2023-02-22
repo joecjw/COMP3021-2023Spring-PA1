@@ -64,6 +64,6 @@ public class User extends Person{
     }
 
     public ArrayList<Label> getUserLabels() {
-        return  this.userLabels;
+        return this.userLabels;
     }
 }

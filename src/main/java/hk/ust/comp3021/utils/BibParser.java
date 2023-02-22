@@ -45,14 +45,50 @@ public class BibParser {
             while (myReader.hasNextLine()) {
                 String data = myReader.nextLine();
                 if(data.contains("@")){
+                    String key = data;
+                    Paper paper = new Paper(key);
+                    data = myReader.nextLine();
 
+                    while(!data.contains("@") && !data.isEmpty()){
+                        switch (getPaperField(data)) {
+                            case "abstract": paper.setAbsContent(data);
+
+                            case "author":  ArrayList<String> authors = new ArrayList<>();
+                                            String[] authorsString = data.split(" ");
+                                            for(String s : authorsString){
+                                                    authors.add(s);
+                                            }
+                                            paper.setAuthors(authors);
+
+                            case "doi": paper.setDoi(data);
+
+                            case "url": paper.setUrl(data);
+
+                            case "journal": paper.setJournal(data);
+
+                            case "year": paper.setYear(Integer.parseInt(data));
+
+                            case "title": paper.setTitle(data);
+
+                            case "keywords":ArrayList<String> keywords = new ArrayList<>();
+                                            String[] keywordsString = data.split(",");
+                                            for(String s : keywordsString){
+                                                keywords.add(s);
+                                            }
+                                            paper.setKeywords(keywords);
+
+                            case "null": myReader.nextLine();
+
+                            default :    myReader.nextLine();
+                        }
+                    }
+                    this.result.put(key, paper);
                 }
             }
             myReader.close();
         } catch (Exception e) {
             this.isErr = true;
         }
-
     }
 
 
@@ -63,7 +99,49 @@ public class BibParser {
      * (2) changing the type signature of `public` methods
      * (3) changing the modifiers of the fields and methods, e.g., changing a modifier from "private" to "public"
      */
-    public void yourMethod() {
+    public boolean getErrStatus() {
+        return this.isErr;
+    }
 
+    public HashMap<String, Paper> getResult(){
+        return this.result;
+    }
+
+    public String getPaperField(String data){
+        if(data.contains("abstract")){
+            return "abstract";
+        }
+
+        else if(data.contains("author")){
+            return "author";
+        }
+
+        else if(data.contains("doi")){
+            return "doi";
+        }
+
+        else if(data.contains("journal")){
+            return "journal";
+        }
+
+        else if(data.contains("keywords")){
+            return "keywords";
+        }
+
+        else if(data.contains("title")){
+            return "title";
+        }
+
+        else if(data.contains("url")){
+            return "url";
+        }
+
+        else if(data.contains("year")){
+            return "year";
+        }
+
+        else {
+            return "null";
+        }
     }
 }
