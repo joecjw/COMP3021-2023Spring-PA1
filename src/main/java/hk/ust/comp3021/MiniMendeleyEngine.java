@@ -275,7 +275,43 @@ public class MiniMendeleyEngine {
      */
     public ArrayList<Paper> processSearchPaperAction(User curUser, SearchPaperAction action) {
         //TODO: complete the definition of the method `processSearchPaperAction`
-        return null;
+        actions.add(action);
+        switch (action.getKind()){
+            case ID:
+                for(String key : this.paperBase.keySet()){
+                    if(this.paperBase.get(key).getPaperID().equals(action.getSearchContent())){
+                        action.appendToActionResult(this.paperBase.get(key));
+                    }
+                }
+                return action.getActionResult();
+
+            case TITLE:
+                for(String key : this.paperBase.keySet()){
+                    if(this.paperBase.get(key).getTitle().equals(action.getSearchContent())){
+                        action.appendToActionResult(this.paperBase.get(key));
+                    }
+                }
+                return action.getActionResult();
+
+            case AUTHOR:
+                for(String key : this.paperBase.keySet()){
+                    if(this.paperBase.get(key).getAuthors().equals(action.getSearchContent())){
+                        action.appendToActionResult(this.paperBase.get(key));
+                    }
+                }
+                return action.getActionResult();
+
+            case JOURNAL:
+                for(String key : this.paperBase.keySet()){
+                    if(this.paperBase.get(key).getJournal().equals(action.getSearchContent())){
+                        action.appendToActionResult(this.paperBase.get(key));
+                    }
+                }
+                return action.getActionResult();
+
+            default:
+                return action.getActionResult();
+        }
     }
 
 
