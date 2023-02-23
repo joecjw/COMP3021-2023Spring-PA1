@@ -26,8 +26,13 @@ public class User extends Person{
      */
     public ArrayList<Comment> searchCommentByPaperObjID(String id) {
         //TODO: complete the definition of the method ``searchCommentByPaperObjID''
-        return null;
-
+        ArrayList<Comment> result = new ArrayList<>();
+        for(Comment comment : this.userComments){
+            if(comment.getType() == Comment.CommentType.COMMENT_OF_PAPER && comment.getCommentObjId().equals(id)){
+                result.add(comment);
+            }
+        }
+        return result;
     }
 
 
@@ -38,7 +43,13 @@ public class User extends Person{
      */
     public ArrayList<Comment> searchCommentByCommentObjID(String id) {
         //TODO: complete the definition of the method ``searchCommentByCommentObjID''
-        return null;
+        ArrayList<Comment> result = new ArrayList<>();
+        for(Comment comment : this.userComments){
+            if(comment.getType() == Comment.CommentType.COMMENT_OF_COMMENT && comment.getCommentObjId().equals(id)){
+                result.add(comment);
+            }
+        }
+        return result;
     }
 
 
@@ -49,7 +60,13 @@ public class User extends Person{
      */
     public ArrayList<Label> searchLabelByPaperID(String id) {
         //TODO: complete the definition of the method ``searchLabelByPaperID''
-        return null;
+        ArrayList<Label> result = new ArrayList<>();
+        for(Label label : this.userLabels){
+            if(label.getPaperID().equals(id)){
+                result.add(label);
+            }
+        }
+        return result;
     }
 
     /**
