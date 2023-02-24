@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="hk.ust.comp3021.actions.AddCommentActionTest" tests="3" skipped="0" failures="3" errors="0" timestamp="2023-02-20T11:30:56" hostname="DESKTOP-MMB9NP2" time="0.01">
+<testsuite name="hk.ust.comp3021.actions.AddCommentActionTest" tests="3" skipped="0" failures="3" errors="0" timestamp="2023-02-23T04:02:57" hostname="DESKTOP-MMB9NP2" time="0.011">
   <properties/>
-  <testcase name="testAddCommentAction_UserOwnershipOfCommentOfComment()" classname="hk.ust.comp3021.actions.AddCommentActionTest" time="0.006">
-    <failure message="java.lang.NullPointerException: Cannot invoke &quot;hk.ust.comp3021.resource.Comment.getCommentID()&quot; because &quot;newComment1&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke &quot;hk.ust.comp3021.resource.Comment.getCommentID()&quot; because &quot;newComment1&quot; is null
-	at hk.ust.comp3021.actions.AddCommentActionTest.testAddCommentAction_UserOwnershipOfCommentOfComment(AddCommentActionTest.java:71)
+  <testcase name="testAddCommentAction_UserOwnershipOfCommentOfComment()" classname="hk.ust.comp3021.actions.AddCommentActionTest" time="0.007">
+    <failure message="java.lang.NullPointerException: Cannot invoke &quot;hk.ust.comp3021.resource.Paper.getComments()&quot; because the return value of &quot;java.util.HashMap.get(Object)&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke &quot;hk.ust.comp3021.resource.Paper.getComments()&quot; because the return value of &quot;java.util.HashMap.get(Object)&quot; is null
+	at hk.ust.comp3021.MiniMendeleyEngine.processAddCommentAction(MiniMendeleyEngine.java:115)
+	at hk.ust.comp3021.actions.AddCommentActionTest.testAddCommentAction_UserOwnershipOfCommentOfComment(AddCommentActionTest.java:69)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
 	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727)
@@ -89,8 +90,9 @@
 </failure>
   </testcase>
   <testcase name="testAddCommentAction_OwnershipOfCommentOfComment()" classname="hk.ust.comp3021.actions.AddCommentActionTest" time="0.001">
-    <failure message="java.lang.NullPointerException: Cannot invoke &quot;hk.ust.comp3021.resource.Comment.getCommentID()&quot; because &quot;newComment1&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke &quot;hk.ust.comp3021.resource.Comment.getCommentID()&quot; because &quot;newComment1&quot; is null
-	at hk.ust.comp3021.actions.AddCommentActionTest.testAddCommentAction_OwnershipOfCommentOfComment(AddCommentActionTest.java:48)
+    <failure message="java.lang.NullPointerException: Cannot invoke &quot;hk.ust.comp3021.resource.Paper.getComments()&quot; because the return value of &quot;java.util.HashMap.get(Object)&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke &quot;hk.ust.comp3021.resource.Paper.getComments()&quot; because the return value of &quot;java.util.HashMap.get(Object)&quot; is null
+	at hk.ust.comp3021.MiniMendeleyEngine.processAddCommentAction(MiniMendeleyEngine.java:115)
+	at hk.ust.comp3021.actions.AddCommentActionTest.testAddCommentAction_OwnershipOfCommentOfComment(AddCommentActionTest.java:46)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
 	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727)
@@ -175,9 +177,10 @@
 	at worker.org.gradle.process.internal.worker.GradleWorkerMain.main(GradleWorkerMain.java:74)
 </failure>
   </testcase>
-  <testcase name="testAddCommentAction_OwnershipOfCommentOfPaper()" classname="hk.ust.comp3021.actions.AddCommentActionTest" time="0.002">
+  <testcase name="testAddCommentAction_OwnershipOfCommentOfPaper()" classname="hk.ust.comp3021.actions.AddCommentActionTest" time="0.001">
     <failure message="java.lang.NullPointerException: Cannot invoke &quot;hk.ust.comp3021.resource.Paper.getComments()&quot; because the return value of &quot;java.util.HashMap.get(Object)&quot; is null" type="java.lang.NullPointerException">java.lang.NullPointerException: Cannot invoke &quot;hk.ust.comp3021.resource.Paper.getComments()&quot; because the return value of &quot;java.util.HashMap.get(Object)&quot; is null
-	at hk.ust.comp3021.actions.AddCommentActionTest.testAddCommentAction_OwnershipOfCommentOfPaper(AddCommentActionTest.java:29)
+	at hk.ust.comp3021.MiniMendeleyEngine.processAddCommentAction(MiniMendeleyEngine.java:115)
+	at hk.ust.comp3021.actions.AddCommentActionTest.testAddCommentAction_OwnershipOfCommentOfPaper(AddCommentActionTest.java:26)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
 	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:727)

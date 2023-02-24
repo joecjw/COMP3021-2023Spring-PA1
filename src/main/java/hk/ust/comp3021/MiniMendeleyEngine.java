@@ -15,7 +15,8 @@ import hk.ust.comp3021.utils.UserRegister;
 import java.util.*;
 
 public class MiniMendeleyEngine {
-    private final String defaultBibFilePath = "resources/bibdata/PAData.bib";
+    //private final String defaultBibFilePath = "resources/bibdata/PAData.bib";
+    private final String defaultBibFilePath = "resources/bibdata/PAUploadData1.bib";
     private final HashMap<String, Paper> paperBase = new HashMap<>();
 
     private final ArrayList<User> users = new ArrayList<>();
@@ -235,8 +236,8 @@ public class MiniMendeleyEngine {
 
         try {
             this.paperBase.putAll(bibParser.getResult());
-            for (String key : bibParser.getResult().keySet()) {
-                for (String author : bibParser.getResult().get(key).getAuthors()) {
+            for (Map.Entry<String, Paper> set : this.paperBase.entrySet()) {
+                for (String author : set.getValue().getAuthors()) {
                     boolean existedResearcher = false;
                     Researcher updateResearcher = null;
                     for (Researcher researcher : this.researchers) {
@@ -246,10 +247,10 @@ public class MiniMendeleyEngine {
                         }
                     }
                     if (existedResearcher == true) {
-                        updateResearcher.getPapers().add(bibParser.getResult().get(key));
+                        updateResearcher.getPapers().add(set.getValue());
                     } else {
                         Researcher newResearcher = new Researcher("Researcher_" + String.valueOf(researchers.size()), author);
-                        newResearcher.getPapers().add(bibParser.getResult().get(key));
+                        newResearcher.getPapers().add(set.getValue());
                         this.researchers.add(newResearcher);
                     }
                 }
@@ -260,6 +261,26 @@ public class MiniMendeleyEngine {
         }
 
         action.setActionResult(true);
+
+        /*for(Map.Entry<String, Paper> set : this.paperBase.entrySet()){
+            System.out.println(set.getValue().getPaperID());
+            System.out.println(set.getValue().getAuthors());
+            System.out.println(set.getValue().getJournal());
+            System.out.println(set.getValue().getTitle());
+            System.out.println(set.getValue().getAbsContent());
+            System.out.println(set.getValue().getDoi());
+            System.out.println(set.getValue().getKeywords());
+            System.out.println(set.getValue().getUrl());
+            System.out.println(set.getValue().getYear());
+            System.out.println();
+        }
+
+        for(Researcher researcher : this.researchers){
+            System.out.println(researcher.getId());
+            System.out.println(researcher.getName());
+            System.out.println(researcher.getPapers());
+            System.out.println();
+        }*/
     }
 
 

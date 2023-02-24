@@ -1,6 +1,7 @@
 package hk.ust.comp3021.utils;
 
 import hk.ust.comp3021.resource.Paper;
+import java.io.File;
 import java.util.*;
 
 public class BibParser {
@@ -12,6 +13,7 @@ public class BibParser {
     public BibParser(String bibfilePath) {
         //TODO: complete the definition of the constructor
         this.bibfilePath = bibfilePath;
+        this.result = new HashMap<>();
     }
 
 
@@ -41,52 +43,64 @@ public class BibParser {
     public void parse() {
         //TODO: complete the definition of the method `parse`
         try {
-            Scanner myReader = new Scanner(this.bibfilePath);
+            File file = new File(this.bibfilePath);
+            Scanner myReader = new Scanner(file);
+            String data = myReader.nextLine();
             while (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
                 if(data.contains("@")){
-                    String key = data;
+                    String key = this.parsePaperID(data);
                     Paper paper = new Paper(key);
                     data = myReader.nextLine();
-
                     while(!data.contains("@") && !data.isEmpty()){
                         switch (getPaperField(data)) {
-                            case "abstract": paper.setAbsContent(data);
+                            case "abstract":
+                                paper.setAbsContent(parseAbsContent(data));
+                                break;
 
-                            case "author":  ArrayList<String> authors = new ArrayList<>();
-                                            String[] authorsString = data.split(" ");
-                                            for(String s : authorsString){
-                                                    authors.add(s);
-                                            }
-                                            paper.setAuthors(authors);
+                            case "author":
+                                paper.setAuthors(parseAuthors(data));
+                                break;
 
-                            case "doi": paper.setDoi(data);
+                            case "doi":
+                                paper.setDoi(parseDoi(data));
+                                break;
 
-                            case "url": paper.setUrl(data);
+                            case "url":
+                                paper.setUrl(parseUrl(data));
+                                break;
 
-                            case "journal": paper.setJournal(data);
+                            case "journal":
+                                paper.setJournal(parseJournal(data));
+                                break;
 
-                            case "year": paper.setYear(Integer.parseInt(data));
+                            case "year":
+                                paper.setYear(parseYear(data));
+                                break;
 
-                            case "title": paper.setTitle(data);
+                            case "title":
+                                paper.setTitle(parseTitle(data));
+                                break;
 
-                            case "keywords":ArrayList<String> keywords = new ArrayList<>();
-                                            String[] keywordsString = data.split(",");
-                                            for(String s : keywordsString){
-                                                keywords.add(s);
-                                            }
-                                            paper.setKeywords(keywords);
+                            case "keywords":
+                                paper.setKeywords(parseKeywords(data));
+                                break;
 
-                            case "null": myReader.nextLine();
-
-                            default :    myReader.nextLine();
+                            case "null":
+                                break;
+                        }
+                        if(myReader.hasNextLine()){
+                            data = myReader.nextLine();
+                        }
+                        else {
+                            break;
                         }
                     }
                     this.result.put(key, paper);
                 }
             }
             myReader.close();
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             this.isErr = true;
         }
     }
@@ -144,4 +158,78 @@ public class BibParser {
             return "null";
         }
     }
+
+    public String parsePaperID(String data) {
+        String[] tokens = data.split("[{]",2);
+        tokens[1] = tokens[1].trim();
+        String result = tokens[1].substring(0,tokens[1].length()-1);
+        return result;
+    }
+
+    public String parseDoi(String data) {
+        String[] tokens = data.split("[{]",2);
+        tokens[1] = tokens[1].trim();
+        String result = tokens[1].substring(0,tokens[1].length()-2);
+        return result;
+    }
+
+    public ArrayList<String> parseAuthors(String data) {
+        String[] tokens = data.split("[{]",2);
+        tokens[1] = tokens[1].trim();
+        tokens[1] = tokens[1].substring(0,tokens[1].length()-2);
+        String[] authors = tokens[1].split("and");
+        ArrayList<String> result = new ArrayList<>();
+        for(int i = 0; i < authors.length; i++){
+            result.add(authors[i].trim());
+        }
+        return result;
+    }
+
+    public String parseTitle(String data) {
+        String[] tokens = data.split("[{]",2);
+        tokens[1] = tokens[1].trim();
+        String result = tokens[1].substring(0,tokens[1].length()-2);
+        return result;
+    }
+
+    public String parseJournal(String data) {
+        String[] tokens = data.split("[{]",2);
+        tokens[1] = tokens[1].trim();
+        String result = tokens[1].substring(0,tokens[1].length()-2);
+        return result;
+    }
+
+    public ArrayList<String> parseKeywords(String data) {
+        String[] tokens = data.split("[{]",2);
+        tokens[1] = tokens[1].trim();
+        tokens[1] = tokens[1].substring(0,tokens[1].length()-2);
+        String[] keywords = tokens[1].split(",");
+        ArrayList<String> result = new ArrayList<>();
+        for(int i = 0; i < keywords.length; i++){
+            result.add(keywords[i].trim());
+        }
+        return result;
+    }
+
+    public int parseYear(String data) {
+        String[] tokens = data.split("[{]",2);
+        tokens[1] = tokens[1].trim();
+        String result = tokens[1].substring(0,tokens[1].length()-2);
+        return Integer.parseInt(result);
+    }
+
+    public String parseUrl(String data) {
+        String[] tokens = data.split("[{]",2);
+        tokens[1] = tokens[1].trim();
+        String result = tokens[1].substring(0,tokens[1].length()-2);
+        return result;
+    }
+
+    public String parseAbsContent(String data) {
+        String[] tokens = data.split("[{]",2);
+        tokens[1] = tokens[1].trim();
+        String result = tokens[1].substring(0,tokens[1].length()-2);
+        return result;
+    }
+
 }
