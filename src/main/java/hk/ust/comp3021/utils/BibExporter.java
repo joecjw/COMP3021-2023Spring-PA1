@@ -49,8 +49,7 @@ public class BibExporter {
             String content = this.generate();
             myWriter.write(content);
             myWriter.close();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             this.isErr = true;
         }
     }

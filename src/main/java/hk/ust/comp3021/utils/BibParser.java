@@ -87,11 +87,12 @@ public class BibParser {
 
                             case "null":
                                 break;
+
+                            default:
                         }
                         if(myReader.hasNextLine()){
                             data = myReader.nextLine();
-                        }
-                        else {
+                        } else {
                             break;
                         }
                     }
@@ -99,8 +100,7 @@ public class BibParser {
                 }
             }
             myReader.close();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             this.isErr = true;
         }
     }
@@ -124,37 +124,21 @@ public class BibParser {
     public String getPaperField(String data){
         if(data.contains("abstract")){
             return "abstract";
-        }
-
-        else if(data.contains("author")){
+        } else if(data.contains("author")){
             return "author";
-        }
-
-        else if(data.contains("doi")){
+        } else if(data.contains("doi")){
             return "doi";
-        }
-
-        else if(data.contains("journal")){
+        } else if(data.contains("journal")){
             return "journal";
-        }
-
-        else if(data.contains("keywords")){
+        } else if(data.contains("keywords")){
             return "keywords";
-        }
-
-        else if(data.contains("title")){
+        } else if(data.contains("title")){
             return "title";
-        }
-
-        else if(data.contains("url")){
+        } else if(data.contains("url")){
             return "url";
-        }
-
-        else if(data.contains("year")){
+        } else if(data.contains("year")){
             return "year";
-        }
-
-        else {
+        } else {
             return "null";
         }
     }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="hk.ust.comp3021.actions.UploadPaperActionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-02-24T16:07:43" hostname="DESKTOP-MMB9NP2" time="0.033">
+<testsuite name="hk.ust.comp3021.actions.UploadPaperActionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-02-24T16:39:41" hostname="DESKTOP-MMB9NP2" time="0.057">
   <properties/>
-  <testcase name="testUploadPaperAction_CheckPaperBase()" classname="hk.ust.comp3021.actions.UploadPaperActionTest" time="0.01"/>
-  <testcase name="testUploadPaperAction_CheckPaperSet()" classname="hk.ust.comp3021.actions.UploadPaperActionTest" time="0.011"/>
-  <testcase name="testUploadPaperAction_IsSuccessCheck()" classname="hk.ust.comp3021.actions.UploadPaperActionTest" time="0.01"/>
+  <testcase name="testUploadPaperAction_CheckPaperBase()" classname="hk.ust.comp3021.actions.UploadPaperActionTest" time="0.027"/>
+  <testcase name="testUploadPaperAction_CheckPaperSet()" classname="hk.ust.comp3021.actions.UploadPaperActionTest" time="0.02"/>
+  <testcase name="testUploadPaperAction_IsSuccessCheck()" classname="hk.ust.comp3021.actions.UploadPaperActionTest" time="0.008"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

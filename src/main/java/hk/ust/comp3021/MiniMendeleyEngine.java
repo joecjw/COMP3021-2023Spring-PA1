@@ -111,13 +111,13 @@ public class MiniMendeleyEngine {
             return null;
         }
 
+
         if(newComment.getType().equals(CommentType.COMMENT_OF_PAPER)) {
             if(!paperBase.get(action.getObjectId()).getComments().add(newComment)){
                 action.setActionResult(false);
                 return null;
             }
-        }
-        else if(newComment.getType().equals(CommentType.COMMENT_OF_COMMENT)){
+        } else if(newComment.getType().equals(CommentType.COMMENT_OF_COMMENT)){
             for(int i = 0; i < this.comments.size(); i++){
                 if(action.getObjectId().equals(comments.get(i).getCommentID())){
                     if(!comments.get(i).getAttachedComments().add(newComment)){
@@ -200,7 +200,7 @@ public class MiniMendeleyEngine {
                     isPaperAbsent = false;
                 }
             }
-            if(isPaperAbsent == true){
+            if(isPaperAbsent){
                 action.setActionResult(false);
                 return;
             }
@@ -209,10 +209,9 @@ public class MiniMendeleyEngine {
         BibExporter bibExporter = new BibExporter(tagetPapers, action.getDownloadPath());
         bibExporter.export();
 
-        if(bibExporter.getErrStatus() == true){
+        if(bibExporter.getErrStatus()){
             action.setActionResult(false);
-        }
-        else {
+        } else {
             action.setActionResult(true);
         }
         actions.add(action);
@@ -239,7 +238,7 @@ public class MiniMendeleyEngine {
         bibParser.parse();
 
         this.actions.add(action);
-        if(bibParser.getErrStatus() == true){
+        if(bibParser.getErrStatus()){
             action.setActionResult(false);
             return;
         }
@@ -257,7 +256,7 @@ public class MiniMendeleyEngine {
                             updateResearcher = researcher;
                         }
                     }
-                    if (existedResearcher == true) {
+                    if (existedResearcher) {
                         updateResearcher.getPapers().add(this.paperBase.get(key));
                     } else {
                         Researcher newResearcher = new Researcher("Researcher_" + String.valueOf(researchers.size()), author);
@@ -298,9 +297,7 @@ public class MiniMendeleyEngine {
                    }
                }
            }
-       }
-
-       else if(action.getKind() == SearchKind.TITLE) {
+       } else if(action.getKind() == SearchKind.TITLE) {
            for(String key : this.paperBase.keySet()){
                if(this.paperBase.get(key).getTitle() != null){
                    if(this.paperBase.get(key).getTitle().equals(action.getSearchContent())){
@@ -308,9 +305,7 @@ public class MiniMendeleyEngine {
                    }
                }
            }
-       }
-
-       else if(action.getKind() == SearchKind.AUTHOR){
+       } else if(action.getKind() == SearchKind.AUTHOR){
             for(String key : this.paperBase.keySet()){
                 if(this.paperBase.get(key).getAuthors() != null){
                     for(String author : this.paperBase.get(key).getAuthors()){
@@ -320,9 +315,7 @@ public class MiniMendeleyEngine {
                     }
                 }
             }
-       }
-
-       else if(action.getKind() == SearchKind.JOURNAL){
+       } else if(action.getKind() == SearchKind.JOURNAL){
             for(String key : this.paperBase.keySet()){
                 if(this.paperBase.get(key).getJournal() != null){
                     if(this.paperBase.get(key).getJournal().equals(action.getSearchContent())){

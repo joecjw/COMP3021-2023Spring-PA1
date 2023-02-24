@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="hk.ust.comp3021.actions.SearchPaperActionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-02-24T16:07:43" hostname="DESKTOP-MMB9NP2" time="0.154">
+<testsuite name="hk.ust.comp3021.actions.SearchPaperActionTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-02-24T16:39:41" hostname="DESKTOP-MMB9NP2" time="0.065">
   <properties/>
-  <testcase name="testSearchPaperAction_SearchByAuthor()" classname="hk.ust.comp3021.actions.SearchPaperActionTest" time="0.092"/>
-  <testcase name="testSearchPaperAction_SearchByTitle()" classname="hk.ust.comp3021.actions.SearchPaperActionTest" time="0.04"/>
-  <testcase name="testSearchPaperAction_SearchByJournal()" classname="hk.ust.comp3021.actions.SearchPaperActionTest" time="0.019"/>
+  <testcase name="testSearchPaperAction_SearchByAuthor()" classname="hk.ust.comp3021.actions.SearchPaperActionTest" time="0.025"/>
+  <testcase name="testSearchPaperAction_SearchByTitle()" classname="hk.ust.comp3021.actions.SearchPaperActionTest" time="0.022"/>
+  <testcase name="testSearchPaperAction_SearchByJournal()" classname="hk.ust.comp3021.actions.SearchPaperActionTest" time="0.017"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
