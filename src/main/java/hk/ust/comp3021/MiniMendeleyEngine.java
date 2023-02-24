@@ -112,14 +112,14 @@ public class MiniMendeleyEngine {
         }
 
         if(newComment.getType().equals(CommentType.COMMENT_OF_PAPER)) {
-            if(!paperBase.get(newComment.getCommentObjId()).getComments().add(newComment)){
+            if(!paperBase.get(action.getObjectId()).getComments().add(newComment)){
                 action.setActionResult(false);
-                return  null;
+                return null;
             }
         }
         else if(newComment.getType().equals(CommentType.COMMENT_OF_COMMENT)){
             for(int i = 0; i < this.comments.size(); i++){
-                if(newComment.getCommentObjId().equals(comments.get(i).getCommentID())){
+                if(action.getObjectId().equals(comments.get(i).getCommentID())){
                     if(!comments.get(i).getAttachedComments().add(newComment)){
                         action.setActionResult(false);
                         return null;
@@ -163,7 +163,7 @@ public class MiniMendeleyEngine {
             return null;
         }
 
-        if(!paperBase.get(newLabel.getPaperID()).getLabels().add(newLabel)){
+        if(!paperBase.get(action.getPaperID()).getLabels().add(newLabel)){
             action.setActionResult(false);
             return  null;
         }
@@ -288,42 +288,51 @@ public class MiniMendeleyEngine {
     public ArrayList<Paper> processSearchPaperAction(User curUser, SearchPaperAction action) {
         //TODO: complete the definition of the method `processSearchPaperAction`
         actions.add(action);
-        switch (action.getKind()){
-            case ID:
-                for(String key : this.paperBase.keySet()){
-                    if(this.paperBase.get(key).getPaperID().equals(action.getSearchContent())){
-                        action.appendToActionResult(this.paperBase.get(key));
+       if(action.getKind() == SearchKind.ID) {
+           for (String key : this.paperBase.keySet()) {
+               if (this.paperBase.get(key).getPaperID() != null) {
+                   if(this.paperBase.get(key).getPaperID().equals(action.getSearchContent())){
+                       System.out.println(this.paperBase.get(key).getPaperID());
+                       System.out.println(this.paperBase.get(key).getPaperID().length());
+                       action.appendToActionResult(this.paperBase.get(key));
+                   }
+               }
+           }
+       }
+
+       else if(action.getKind() == SearchKind.TITLE) {
+           for(String key : this.paperBase.keySet()){
+               if(this.paperBase.get(key).getTitle() != null){
+                   if(this.paperBase.get(key).getTitle().equals(action.getSearchContent())){
+                       action.appendToActionResult(this.paperBase.get(key));
+                   }
+               }
+           }
+       }
+
+       else if(action.getKind() == SearchKind.AUTHOR){
+            for(String key : this.paperBase.keySet()){
+                if(this.paperBase.get(key).getAuthors() != null){
+                    for(String author : this.paperBase.get(key).getAuthors()){
+                        if(author.equals(action.getSearchContent())) {
+                            action.appendToActionResult(this.paperBase.get(key));
+                        }
                     }
                 }
-                return action.getActionResult();
+            }
+       }
 
-            case TITLE:
-                for(String key : this.paperBase.keySet()){
-                    if(this.paperBase.get(key).getTitle().equals(action.getSearchContent())){
-                        action.appendToActionResult(this.paperBase.get(key));
-                    }
-                }
-                return action.getActionResult();
-
-            case AUTHOR:
-                for(String key : this.paperBase.keySet()){
-                    if(this.paperBase.get(key).getAuthors().equals(action.getSearchContent())){
-                        action.appendToActionResult(this.paperBase.get(key));
-                    }
-                }
-                return action.getActionResult();
-
-            case JOURNAL:
-                for(String key : this.paperBase.keySet()){
+       else if(action.getKind() == SearchKind.JOURNAL){
+            for(String key : this.paperBase.keySet()){
+                if(this.paperBase.get(key).getJournal() != null){
                     if(this.paperBase.get(key).getJournal().equals(action.getSearchContent())){
                         action.appendToActionResult(this.paperBase.get(key));
                     }
                 }
-                return action.getActionResult();
-
-            default:
-                return action.getActionResult();
+            }
         }
+
+       return action.getActionResult();
     }
 
 

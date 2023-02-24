@@ -1,0 +1,28 @@
+@article{Bourdoncle1993,
+‹   abstract = {Abstract interpretation is a formal method that enables the static and automatic determination of run-time properties of programs. This method uses a characterization of program invariants as least and greatest fixed points of continuous functions over complete lattices of program properties. In this paper, we study precise and efficient chaotic iteration strategies for computing such fixed points when lattices are of infinite height and speedup techniques, known as widening and narrowing, have to be used. These strategies are based on a weak topological ordering of the dependency graph of the system of semantic equations associated with the program and minimize the loss in precision due to the use of widening operators. We discuss complexity and implementation issues and give precise upper bounds on the complexity of the intraprocedural and interprocedural abstract interpretation of higher-order programs based on the structure of their control flow graph.},
+$   author = {Fran√ßois Bourdoncle},
+ï   journal = {Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)},
+D   title = {Efficient chaotic iteration strategies with widenings},
+   year = {1993},
+}
+@article{Ramalingam2002,
+r   abstract = {Abstract interpretation,Model checking,Predicate abstraction,Software components,Static analysis},
+a   author = {G. Ramalingam and Alex Warshavsky and John Field and Deepak Goyal and Mooly Sagiv},
+s   journal = {Proceedings of the ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI)},
+`   title = {Deriving specialized program analyses for certifying component-client conformance},
+   year = {2002},
+}
+@article{Bourdoncle1993,
+‹   abstract = {Abstract interpretation is a formal method that enables the static and automatic determination of run-time properties of programs. This method uses a characterization of program invariants as least and greatest fixed points of continuous functions over complete lattices of program properties. In this paper, we study precise and efficient chaotic iteration strategies for computing such fixed points when lattices are of infinite height and speedup techniques, known as widening and narrowing, have to be used. These strategies are based on a weak topological ordering of the dependency graph of the system of semantic equations associated with the program and minimize the loss in precision due to the use of widening operators. We discuss complexity and implementation issues and give precise upper bounds on the complexity of the intraprocedural and interprocedural abstract interpretation of higher-order programs based on the structure of their control flow graph.},
+$   author = {Fran√ßois Bourdoncle},
+ï   journal = {Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)},
+D   title = {Efficient chaotic iteration strategies with widenings},
+   year = {1993},
+}
+@article{Ramalingam2002,
+r   abstract = {Abstract interpretation,Model checking,Predicate abstraction,Software components,Static analysis},
+a   author = {G. Ramalingam and Alex Warshavsky and John Field and Deepak Goyal and Mooly Sagiv},
+s   journal = {Proceedings of the ACM SIGPLAN Conference on Programming Language Design and Implementation (PLDI)},
+`   title = {Deriving specialized program analyses for certifying component-client conformance},
+   year = {2002},
+}
