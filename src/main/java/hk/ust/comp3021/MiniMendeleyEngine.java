@@ -15,8 +15,7 @@ import hk.ust.comp3021.utils.UserRegister;
 import java.util.*;
 
 public class MiniMendeleyEngine {
-    //private final String defaultBibFilePath = "resources/bibdata/PAData.bib";
-    private final String defaultBibFilePath = "resources/bibdata/PAUploadData1.bib";
+    private final String defaultBibFilePath = "resources/bibdata/PAData.bib";
     private final HashMap<String, Paper> paperBase = new HashMap<>();
 
     private final ArrayList<User> users = new ArrayList<>();
@@ -192,13 +191,24 @@ public class MiniMendeleyEngine {
     public void processDownloadPaperAction(User curUser, DownloadPaperAction action) {
         //TODO: complete the definition of the method `processDownloadPaperAction`
         HashMap<String, Paper> tagetPapers = new HashMap<>();
-        for(String key : this.paperBase.keySet()){
-            if(action.getPaper().contains(this.paperBase.get(key).getPaperID())){
-                tagetPapers.put(key, this.paperBase.get(key));
+
+        for(String downLoadPaper : action.getPaper()){
+            boolean isPaperAbsent = true;
+            for(String key : this.paperBase.keySet()){
+                if(this.paperBase.get(key).getPaperID().equals(downLoadPaper)){
+                    tagetPapers.put(key, this.paperBase.get(key));
+                    isPaperAbsent = false;
+                }
+            }
+            if(isPaperAbsent == true){
+                action.setActionResult(false);
+                return;
             }
         }
+
         BibExporter bibExporter = new BibExporter(tagetPapers, action.getDownloadPath());
         bibExporter.export();
+
         if(bibExporter.getErrStatus() == true){
             action.setActionResult(false);
         }
@@ -236,8 +246,9 @@ public class MiniMendeleyEngine {
 
         try {
             this.paperBase.putAll(bibParser.getResult());
-            for (Map.Entry<String, Paper> set : this.paperBase.entrySet()) {
-                for (String author : set.getValue().getAuthors()) {
+            action.setUploadedPapers(bibParser.getResult());
+            for (String key : this.paperBase.keySet()) {
+                for (String author : this.paperBase.get(key).getAuthors()) {
                     boolean existedResearcher = false;
                     Researcher updateResearcher = null;
                     for (Researcher researcher : this.researchers) {
@@ -247,10 +258,10 @@ public class MiniMendeleyEngine {
                         }
                     }
                     if (existedResearcher == true) {
-                        updateResearcher.getPapers().add(set.getValue());
+                        updateResearcher.getPapers().add(this.paperBase.get(key));
                     } else {
                         Researcher newResearcher = new Researcher("Researcher_" + String.valueOf(researchers.size()), author);
-                        newResearcher.getPapers().add(set.getValue());
+                        newResearcher.getPapers().add(this.paperBase.get(key));
                         this.researchers.add(newResearcher);
                     }
                 }
@@ -261,26 +272,6 @@ public class MiniMendeleyEngine {
         }
 
         action.setActionResult(true);
-
-        /*for(Map.Entry<String, Paper> set : this.paperBase.entrySet()){
-            System.out.println(set.getValue().getPaperID());
-            System.out.println(set.getValue().getAuthors());
-            System.out.println(set.getValue().getJournal());
-            System.out.println(set.getValue().getTitle());
-            System.out.println(set.getValue().getAbsContent());
-            System.out.println(set.getValue().getDoi());
-            System.out.println(set.getValue().getKeywords());
-            System.out.println(set.getValue().getUrl());
-            System.out.println(set.getValue().getYear());
-            System.out.println();
-        }
-
-        for(Researcher researcher : this.researchers){
-            System.out.println(researcher.getId());
-            System.out.println(researcher.getName());
-            System.out.println(researcher.getPapers());
-            System.out.println();
-        }*/
     }
 
 
@@ -543,7 +534,18 @@ public class MiniMendeleyEngine {
      * (2) changing the type signature of `public` methods
      * (3) changing the modifiers of the fields and methods, e.g., changing a modifier from "private" to "public"
      */
-    public void yourMethod() {
-
+    public void printPaperBase() {
+        for(Map.Entry<String, Paper> set : this.paperBase.entrySet()){
+            System.out.println(set.getValue().getPaperID());
+            System.out.println(set.getValue().getAuthors());
+            System.out.println(set.getValue().getJournal());
+            System.out.println(set.getValue().getTitle());
+            System.out.println(set.getValue().getAbsContent());
+            System.out.println(set.getValue().getDoi());
+            System.out.println(set.getValue().getKeywords());
+            System.out.println(set.getValue().getUrl());
+            System.out.println(set.getValue().getYear());
+            System.out.println();
+        }
     }
 }

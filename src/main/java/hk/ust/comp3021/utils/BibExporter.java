@@ -3,7 +3,6 @@ package hk.ust.comp3021.utils;
 import hk.ust.comp3021.resource.Paper;
 
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.HashMap;
 
 public class BibExporter {
@@ -28,11 +27,13 @@ public class BibExporter {
 
     public String generate(){
         //TODO: complete the definition of the method `export`
-        String tokenizedString = null;
+        String result = "";
         for(String key : this.papers.keySet()){
-            tokenizedString += this.papers.get(key).toString();
+            String parsedString = this.papers.get(key).toString();
+            System.out.print(parsedString);
+            result += parsedString;
         }
-        return tokenizedString;
+        return result;
     }
 
 
@@ -45,13 +46,13 @@ public class BibExporter {
         //TODO: complete the definition of the method `export`
         try {
             FileWriter myWriter = new FileWriter(bibFile);
-            myWriter.write(this.generate());
+            String content = this.generate();
+            myWriter.write(content);
             myWriter.close();
         }
-        catch (IOException e) {
+        catch (Exception e) {
             this.isErr = true;
         }
-
     }
 
 
