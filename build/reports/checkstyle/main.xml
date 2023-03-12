@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="10.3.2">
-<file name="C:\Users\s2015\git\COMP3021-PA1\src\main\java\hk\ust\comp3021\action\Action.java">
+<file name="C:\HKUST\OneDrive - HKUST Connect\Year 3\Sem 2\COMP 3021\COMP3021-PA1\src\main\java\hk\ust\comp3021\action\Action.java">
 </file>
-<file name="C:\Users\s2015\git\COMP3021-PA1\src\main\java\hk\ust\comp3021\action\AddCommentAction.java">
+<file name="C:\HKUST\OneDrive - HKUST Connect\Year 3\Sem 2\COMP 3021\COMP3021-PA1\src\main\java\hk\ust\comp3021\action\AddCommentAction.java">
 </file>
-<file name="C:\Users\s2015\git\COMP3021-PA1\src\main\java\hk\ust\comp3021\action\AddLabelAction.java">
+<file name="C:\HKUST\OneDrive - HKUST Connect\Year 3\Sem 2\COMP 3021\COMP3021-PA1\src\main\java\hk\ust\comp3021\action\AddLabelAction.java">
 </file>
-<file name="C:\Users\s2015\git\COMP3021-PA1\src\main\java\hk\ust\comp3021\action\DownloadPaperAction.java">
+<file name="C:\HKUST\OneDrive - HKUST Connect\Year 3\Sem 2\COMP 3021\COMP3021-PA1\src\main\java\hk\ust\comp3021\action\DownloadPaperAction.java">
 </file>
-<file name="C:\Users\s2015\git\COMP3021-PA1\src\main\java\hk\ust\comp3021\action\SearchPaperAction.java">
+<file name="C:\HKUST\OneDrive - HKUST Connect\Year 3\Sem 2\COMP 3021\COMP3021-PA1\src\main\java\hk\ust\comp3021\action\SearchPaperAction.java">
 </file>
-<file name="C:\Users\s2015\git\COMP3021-PA1\src\main\java\hk\ust\comp3021\action\UploadPaperAction.java">
+<file name="C:\HKUST\OneDrive - HKUST Connect\Year 3\Sem 2\COMP 3021\COMP3021-PA1\src\main\java\hk\ust\comp3021\action\UploadPaperAction.java">
 </file>
-<file name="C:\Users\s2015\git\COMP3021-PA1\src\main\java\hk\ust\comp3021\MiniMendeley.java">
+<file name="C:\HKUST\OneDrive - HKUST Connect\Year 3\Sem 2\COMP 3021\COMP3021-PA1\src\main\java\hk\ust\comp3021\MiniMendeley.java">
 </file>
-<file name="C:\Users\s2015\git\COMP3021-PA1\src\main\java\hk\ust\comp3021\MiniMendeleyEngine.java">
+<file name="C:\HKUST\OneDrive - HKUST Connect\Year 3\Sem 2\COMP 3021\COMP3021-PA1\src\main\java\hk\ust\comp3021\MiniMendeleyEngine.java">
 </file>
-<file name="C:\Users\s2015\git\COMP3021-PA1\src\main\java\hk\ust\comp3021\person\Person.java">
+<file name="C:\HKUST\OneDrive - HKUST Connect\Year 3\Sem 2\COMP 3021\COMP3021-PA1\src\main\java\hk\ust\comp3021\person\Person.java">
 </file>
-<file name="C:\Users\s2015\git\COMP3021-PA1\src\main\java\hk\ust\comp3021\person\Researcher.java">
+<file name="C:\HKUST\OneDrive - HKUST Connect\Year 3\Sem 2\COMP 3021\COMP3021-PA1\src\main\java\hk\ust\comp3021\person\Researcher.java">
 </file>
-<file name="C:\Users\s2015\git\COMP3021-PA1\src\main\java\hk\ust\comp3021\person\User.java">
+<file name="C:\HKUST\OneDrive - HKUST Connect\Year 3\Sem 2\COMP 3021\COMP3021-PA1\src\main\java\hk\ust\comp3021\person\User.java">
 </file>
-<file name="C:\Users\s2015\git\COMP3021-PA1\src\main\java\hk\ust\comp3021\resource\Comment.java">
+<file name="C:\HKUST\OneDrive - HKUST Connect\Year 3\Sem 2\COMP 3021\COMP3021-PA1\src\main\java\hk\ust\comp3021\resource\Comment.java">
 </file>
-<file name="C:\Users\s2015\git\COMP3021-PA1\src\main\java\hk\ust\comp3021\resource\Label.java">
+<file name="C:\HKUST\OneDrive - HKUST Connect\Year 3\Sem 2\COMP 3021\COMP3021-PA1\src\main\java\hk\ust\comp3021\resource\Label.java">
 </file>
-<file name="C:\Users\s2015\git\COMP3021-PA1\src\main\java\hk\ust\comp3021\resource\Paper.java">
+<file name="C:\HKUST\OneDrive - HKUST Connect\Year 3\Sem 2\COMP 3021\COMP3021-PA1\src\main\java\hk\ust\comp3021\resource\Paper.java">
 </file>
-<file name="C:\Users\s2015\git\COMP3021-PA1\src\main\java\hk\ust\comp3021\utils\BibExporter.java">
+<file name="C:\HKUST\OneDrive - HKUST Connect\Year 3\Sem 2\COMP 3021\COMP3021-PA1\src\main\java\hk\ust\comp3021\utils\BibExporter.java">
 </file>
-<file name="C:\Users\s2015\git\COMP3021-PA1\src\main\java\hk\ust\comp3021\utils\BibParser.java">
+<file name="C:\HKUST\OneDrive - HKUST Connect\Year 3\Sem 2\COMP 3021\COMP3021-PA1\src\main\java\hk\ust\comp3021\utils\BibParser.java">
 </file>
-<file name="C:\Users\s2015\git\COMP3021-PA1\src\main\java\hk\ust\comp3021\utils\UserRegister.java">
+<file name="C:\HKUST\OneDrive - HKUST Connect\Year 3\Sem 2\COMP 3021\COMP3021-PA1\src\main\java\hk\ust\comp3021\utils\UserRegister.java">
 </file>
 </checkstyle>

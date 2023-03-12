@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="hk.ust.comp3021.MiniMendeleyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-02-24T16:39:40" hostname="DESKTOP-MMB9NP2" time="0.089">
+<testsuite name="hk.ust.comp3021.MiniMendeleyTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-03-12T09:16:12" hostname="DESKTOP-MMB9NP2" time="0.124">
   <properties/>
-  <testcase name="testUserRegister()" classname="hk.ust.comp3021.MiniMendeleyTest" time="0.089"/>
+  <testcase name="testUserRegister()" classname="hk.ust.comp3021.MiniMendeleyTest" time="0.124"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
